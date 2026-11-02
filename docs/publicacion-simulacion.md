@@ -1,17 +1,13 @@
-# Dinámica neuronal, control y generación espacial
+# Coupled Neurodynamic Control and Cross-Environment Spatial Emulation
 
-He reunido en una memoria técnica el trabajo desarrollado en simulación neuronal, control de agentes, fusión de dos entornos de juego y construcción procedural de escenarios tridimensionales.
+I have consolidated a set of experiments on connectome-based motor decoding, reflex arbitration, spatial coupling between heterogeneous interactive processes, and procedural scene construction.
 
-El registro comprende el análisis de una respuesta de giro persistente, la revisión de su calibración inicial, una compensación de línea base evaluada mediante 14 pruebas del decodificador y ensayos de navegación y escape. Incluye también un subsistema procedural que construye el escenario, la iluminación, la cámara y la interacción con superficies de gravedad variable durante la ejecución.
+The neural study identified a persistent turning bias under the tested sensory configuration. A revised baseline estimator corrected its startup calibration; the retained decoder report contains 14 passing tests. Three comparative trial series then examined how neural and programmed reflex triggers affect both damage and goal completion. One policy reduced damage by repeatedly interrupting navigation; the revised policy restored progress. The recorded comparisons do not establish a general advantage for the neural trigger.
 
-La relación entre estos componentes se estudia a través del estado: desde el estímulo que recibe el modelo hasta el movimiento que finalmente aparece en el entorno. La memoria identifica la función de cada capa y el alcance de los ensayos. La fusión dispone de un puente entre procesos y una variante que recrea mecánicas en un único anfitrión, con pruebas conservadas de construcción, colisiones, daño y persistencia. El control neuronal del mashup y su integración con el entorno procedural permanecen como etapas posteriores.
+The spatial work followed two routes: composition between running processes and reconstruction of selected mechanics within one host. Both required explicit treatment of camera state, coordinate frames, interaction events, collision and persistence. Automated checks and live traces exposed a one-frame median presentation delay in the composed view and supported bounded validation of the in-process route. Full campaign compatibility and neural control of the combined environment remain open experimental questions.
 
-Durante el desarrollo, una parte importante del diagnóstico estuvo en las transiciones: el promedio que aprende una línea base, la prioridad que recibe una reacción y la diferencia entre una orden calculada y una trayectoria observada. Conservar esos registros ha permitido formular pruebas más concretas para continuar el trabajo.
+The report includes the architecture, quantitative results, methods, figures, provenance and limits of the current evidence. Its central concern is traceability: for each observed action, the stimulus, intermediate state, command and realized outcome should be recoverable from the record.
 
-La documentación incorpora figuras, resultados conservados, automatización de escenarios y pruebas de compatibilidad, límites conocidos y procedencia de las referencias visuales. La instrumentación operativa y los registros completos se conservan en un repositorio privado separado.
-
-[Leer la memoria ilustrada](https://gmprospect.github.io/docs/simulacion-neuronal-espacial.html) · [Documentación en GitHub](https://github.com/GMProspect/GMProspect.github.io/blob/main/docs/simulacion-neuronal-espacial.md)
+[Illustrated report](https://gmprospect.github.io/docs/neurodynamic-spatial-report.html) · [Public research record](https://github.com/GMProspect/gameagent-research)
 
 Gustavo Adolfo Matheus González · GMProspect
-
-[Repositorio público del proyecto](https://github.com/GMProspect/gameagent-research)

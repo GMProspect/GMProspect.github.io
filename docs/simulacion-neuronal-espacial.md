@@ -22,14 +22,6 @@ La procedencia local del conjunto MaleCNS registra **176.422 neuronas, 6.287.749
 
 La representación espacial permite inspeccionar regiones y posiciones anatómicas; la telemetría funcional muestra tasas de disparo y canales motores. Una representación visible facilita el diagnóstico, pero no sustituye el registro numérico de un ensayo.
 
-![Referencia visual del monitor neuronal del proyecto base](../assets/neuroscope-telemetry.png)
-
-*Figura 2. Imagen de referencia distribuida con el proyecto base: actividad, lecturas motoras y representación sensorial. No es una captura de la corrección local ni evidencia de su resultado. Procedencia: [imagen original](https://github.com/blendi-remade/fly-brain-minecraft/blob/main/docs/media/hud-brainview-neuroscope.png).*
-
-![Referencia de representación espacial del conectoma](../assets/connectome-density.png)
-
-*Figura 3. Representación espacial distribuida con el proyecto base. Ilustra la reconstrucción por bloques; no constituye una medición de densidad sináptica realizada en este trabajo. Procedencia: [imagen original](https://github.com/blendi-remade/fly-brain-minecraft/blob/main/docs/media/flybrain-build.png).*
-
 ## 2. Observación de una asimetría motora
 
 Durante los ensayos locales se registró una respuesta lateral desigual en el canal de giro. La estimulación olfativa a igual tasa nominal por neurona produjo actividad sostenida asimétrica en las poblaciones descendentes examinadas y un mando de giro persistente. La observación motivó el análisis del decodificador y de sus condiciones de arranque.
@@ -62,9 +54,13 @@ La segunda serie incorporó evasión con progreso: las tres condiciones alcanzar
 
 Estos resultados documentan una integración funcional del modelo neuronal con el jugador y una evaluación comparativa del control. El modelo de mosca aporta la señal que desencadena una acción; la navegación y la selección del objetivo de ataque corresponden a otras capas. Los ensayos no establecen una superioridad general del control neuronal.
 
-## 3.2. Fusión entre dos entornos de juego
+![Resultados comparados de tres series experimentales](../assets/control-trials.png)
 
-El segundo desarrollo comprende una integración entre **Minecraft y GTA San Andreas**, con dos rutas técnicas distintas: una ejecución de ambos entornos enlazados y una recreación de mecánicas dentro de un único proceso anfitrión. La documentación local conserva fuentes, trazas y validaciones de ambas rutas.
+*Figura 2. Metas alcanzadas y daño medio por condición a partir de los análisis conservados. Cada condición incluye diez ensayos; las barras describen las medias, sin representar intervalos de incertidumbre.*
+
+## 3.2. Fusión entre dos entornos virtuales
+
+El segundo desarrollo comprende una integración entre **dos entornos virtuales de distinta representación espacial**, con dos rutas técnicas distintas: una ejecución de ambos entornos enlazados y una recreación de mecánicas dentro de un único proceso anfitrión. La documentación local conserva fuentes, trazas y validaciones de ambas rutas.
 
 En la ruta de dos procesos se intercambian estado de cámara, orientación, referencias del suelo y eventos de interacción. La imagen del entorno volumétrico se compone sobre el mundo anfitrión; acciones sobre entidades y bloques se trasladan a sus representaciones correspondientes. El trabajo incluye conversión de coordenadas, entrada de usuario, inventario, vehículos y tratamiento de colisiones. La implementación deriva parcialmente de un ejemplo de integración preexistente, adaptado al nuevo anfitrión.
 
@@ -76,7 +72,7 @@ Se trata de una **fusión funcional en desarrollo**, con comportamientos comprob
 
 ![Dos rutas de integración entre los entornos](../assets/fusion-entornos.svg)
 
-*Figura 4. Esquema elaborado para esta memoria a partir de las fuentes locales: composición entre dos procesos y recreación nativa en un proceso. Es una representación de arquitectura, no una captura de ejecución.*
+*Figura 3. Esquema elaborado para esta memoria a partir de las fuentes locales: composición entre dos procesos y recreación nativa en un proceso. Es una representación de arquitectura, no una captura de ejecución.*
 
 ## 3.3. Automatización de ensayos y comprobaciones
 
@@ -93,10 +89,6 @@ El segundo frente desarrolla un subsistema de generación espacial: un component
 En el prototipo tridimensional, la superficie seleccionada define una dirección de atracción o repulsión. La cámara y el cuerpo se reorientan de forma progresiva respecto de la nueva vertical. El sistema incorpora desplazamiento, salto y recuperación de posición al abandonar el área de juego.
 
 Esta capa procedural concentra la construcción del mundo y su comportamiento en código, sobre un entorno gráfico y físico existente. La evidencia disponible respalda un motor de escena a nivel de aplicación. La composición entre procesos del mashup es un subsistema distinto, descrito en la sección anterior. El prototipo procedural no se presenta como un renderizador independiente.
-
-![Captura local del prototipo espacial de gravedad variable](../assets/procedural-engine.png)
-
-*Figura 5. Captura conservada del prototipo local: estructuras suspendidas, iluminación y cámara en primera persona. Ilustra el entorno procedural; no demuestra una composición entre motores ni una prueba de rendimiento.*
 
 ## 5. Relación entre los componentes
 
@@ -129,6 +121,6 @@ La integración resulta informativa cuando cada transición puede examinarse: qu
 
 ## Procedencia y distribución
 
-La autoría de esta memoria y de la integración local corresponde a Gustavo Adolfo Matheus González. La base neuronal y sus imágenes de referencia proceden de [fly-brain-minecraft](https://github.com/blendi-remade/fly-brain-minecraft); el código base se distribuye bajo MIT y sus datos bajo CC BY 4.0. Los datos anatómicos proceden del proyecto [Male CNS](https://male-cns.janelia.org/), de FlyEM/Janelia y sus instituciones participantes. Las adaptaciones locales descritas no deben atribuirse al proyecto base. La ruta de composición toma como referencia un ejemplo MIT de [universal-modder](https://github.com/rehan-remade/universal-modder); sus adaptaciones y la ruta nativa se distinguen en el registro privado. Se conservan las licencias y los avisos de procedencia correspondientes.
+La autoría de esta memoria y de la integración local corresponde a Gustavo Adolfo Matheus González. La base neuronal procede del [proyecto de referencia](https://github.com/blendi-remade/fly-brain-minecraft); el código base se distribuye bajo MIT y sus datos bajo CC BY 4.0. Los datos anatómicos proceden del proyecto [Male CNS](https://male-cns.janelia.org/), de FlyEM/Janelia y sus instituciones participantes. Las adaptaciones locales descritas no deben atribuirse al proyecto base. La ruta de composición toma como referencia un ejemplo MIT de [universal-modder](https://github.com/rehan-remade/universal-modder); sus adaptaciones y la ruta nativa se distinguen en el registro privado. Se conservan las licencias y los avisos de procedencia correspondientes.
 
 Esta memoria publica descripción funcional, alcance y figuras seleccionadas. La instrumentación operativa y los registros completos se conservan en un repositorio privado separado. Los archivos comerciales de los juegos permanecen exclusivamente en la instalación local. La publicación no distribuye código del modelo, datos anatómicos, ejecutables ni manuales operativos. Las cifras de ensayos locales se presentan como resultados documentados; su reproducción independiente requiere los artefactos de ejecución correspondientes.
