@@ -2,12 +2,13 @@
 
 ## Memoria de desarrollo de un banco experimental de simulación y entornos procedurales
 
-**Gustavo Adolfo Matheus González · GMProspect**  
-Publicado el 1 de noviembre de 2026. Ensayos de control documentados el 7 de octubre de 2026.
+**Gustavo Adolfo Matheus González · GMProspect**
+
+Publicado el 1 de noviembre de 2026. Registros de desarrollo y ensayos revisados: 7–27 de octubre de 2026.
 
 El trabajo reúne dos frentes de desarrollo: un entorno de experimentación con dinámica neuronal y control de agentes, y un subsistema gráfico procedural con navegación sobre superficies de orientación variable. Su relación se encuentra en el tratamiento del estado: cómo se produce una señal, cómo se transforma en una orden y cómo se representa su efecto en un espacio observable.
 
-La memoria los presenta como una misma línea de ingeniería. El alcance actual comprende componentes ejecutables, ensayos de navegación, modificaciones del decodificador motor, visualización de actividad y construcción procedural de escenarios. La integración completa entre todos los entornos continúa como objetivo de desarrollo.
+La memoria los presenta como una misma línea de ingeniería. El alcance comprende componentes ejecutables, ensayos de navegación y control, modificaciones del decodificador, visualización de actividad, fusión de entornos y construcción procedural de escenarios. Se documentan además la composición entre dos juegos y una variante que recrea mecánicas en un único anfitrión. El control neuronal del mashup completo continúa como objetivo de integración.
 
 ![Arquitectura conceptual y estado de integración](../assets/arquitectura-simulacion.svg)
 
@@ -49,9 +50,41 @@ El control se organiza en tres niveles funcionales: objetivos de recorrido, ejec
 
 Un ensayo de navegación registró llegada al objetivo en **8,2 s**. Es evidencia de una operación concreta de desplazamiento, bajo la configuración documentada. La atribución del recorrido corresponde al ejecutor de navegación; ese resultado no demuestra que el conectoma resolviera la planificación.
 
-En otra observación, una aproximación rápida produjo eventos de escape lateralizados. Esto permitió explorar una prioridad de reacción sobre el movimiento ordinario. La evaluación pendiente consiste en medir interrupción, recuperación del recorrido y falsas alarmas, relacionando cada cambio corporal con la capa que lo ordenó.
+En otra observación, una aproximación rápida produjo eventos de escape lateralizados. Esto permitió explorar una prioridad de reacción sobre el movimiento ordinario. La evaluación posterior midió interrupciones, recuperación del recorrido y condiciones de ensayo repetibles, relacionando cada cambio corporal con la capa que lo ordenó.
 
 La separación entre actividad neuronal, mando decodificado y desplazamiento efectivo es parte del método. Un canal centrado no garantiza ausencia de rotación cuando existen otros reflejos programados; una llegada tampoco permite atribuir la decisión a todas las capas presentes.
+
+## 3.1. Ensayos posteriores de control neuronal
+
+Los registros de la carpeta de trabajo vigente amplían el ensayo inicial. El 24 de octubre se realizaron series de **40, 30 y 30 ensayos**, con condiciones sin reflejo, reflejo programado y reflejo neuronal. En la primera serie, reducir daño mediante huida no aseguró alcanzar la meta: el árbitro entraba en un bucle ante perseguidores.
+
+La segunda serie incorporó evasión con progreso: las tres condiciones alcanzaron la meta en 10 de 10 ensayos por condición. El daño medio fue 3,4 sin reflejo, 1,5 con reflejo programado y 3,2 con reflejo neuronal. La tercera serie añadió combate: los daños medios fueron 3,3, 2,4 y 1,8, respectivamente; no se estableció ventaja estadística del reflejo neuronal bajo el criterio previamente fijado.
+
+Estos resultados documentan una integración funcional del modelo neuronal con el jugador y una evaluación comparativa del control. El modelo de mosca aporta la señal que desencadena una acción; la navegación y la selección del objetivo de ataque corresponden a otras capas. Los ensayos no establecen una superioridad general del control neuronal.
+
+## 3.2. Fusión entre dos entornos de juego
+
+El segundo desarrollo comprende una integración entre **Minecraft y GTA San Andreas**, con dos rutas técnicas distintas: una ejecución de ambos entornos enlazados y una recreación de mecánicas dentro de un único proceso anfitrión. La documentación local conserva fuentes, trazas y validaciones de ambas rutas.
+
+En la ruta de dos procesos se intercambian estado de cámara, orientación, referencias del suelo y eventos de interacción. La imagen del entorno volumétrico se compone sobre el mundo anfitrión; acciones sobre entidades y bloques se trasladan a sus representaciones correspondientes. El trabajo incluye conversión de coordenadas, entrada de usuario, inventario, vehículos y tratamiento de colisiones. La implementación deriva parcialmente de un ejemplo de integración preexistente, adaptado al nuevo anfitrión.
+
+El diagnóstico del 27 de octubre documentó **244 s de observación**, con un retraso mediano de un fotograma y máximo de cinco en la imagen compuesta. El desacoplamiento al girar motivó una reproyección rotacional desde la cámara usada para capturar la imagen hacia la cámara de presentación. La corrección se compiló y se verificaron sus cálculos fuera del juego; su resultado completo en ejecución seguía pendiente en el último registro revisado. No se atribuye al sistema una latencia submilisegundo.
+
+La ruta nativa recrea construcción y rotura de bloques, una barra de selección, cámara en primera persona, criaturas, fuego y explosivos dentro del entorno anfitrión. El registro del 26 de octubre documenta una cadena de tres explosivos, daño sobre entidades, interacción con vehículos y recuperación de una construcción después de guardar y reiniciar. También conserva pruebas de geometría, colisiones, formatos de persistencia e instalación reversible.
+
+Se trata de una **fusión funcional en desarrollo**, con comportamientos comprobados en escenas concretas. La compatibilidad suficiente con campaña, interiores y todas las interacciones sigue abierta. El cerebro de mosca y el mashup forman parte del mismo proyecto, pero los registros revisados no demuestran que el modelo neuronal haya completado misiones dentro del mashup.
+
+![Dos rutas de integración entre los entornos](../assets/fusion-entornos.svg)
+
+*Figura 4. Esquema elaborado para esta memoria a partir de las fuentes locales: composición entre dos procesos y recreación nativa en un proceso. Es una representación de arquitectura, no una captura de ejecución.*
+
+## 3.3. Automatización de ensayos y comprobaciones
+
+La compatibilidad se trabajó con una cadena de herramientas, además de las pruebas manuales. En el entorno neuronal se prepararon escenarios repetibles de aproximación, esquiva y combate, con registro de estímulos, activación de reflejos, trayectorias, daño y llegada a la meta. Las series comparativas se analizaron con condiciones fijadas antes del ensayo y resultados conservados por corrida.
+
+Para la integración entre juegos se desarrollaron herramientas de construcción y restauración de recursos, comprobación de archivos, diagnóstico de estado en ejecución y pruebas de instalación reversible. En la ruta nativa, las sondas se vinculan a un proceso de juego concreto y registran respuestas de acciones individuales; las pruebas aisladas comprueban formatos, persistencia y recuperación ante fallos simulados. La automatización permitió repetir condiciones y detectar incompatibilidades, pero no reemplaza la validación visual y de misiones dentro de los juegos.
+
+El registro distingue pruebas ejecutadas en el juego, pruebas aisladas y componentes preparados pero pendientes de ensayo. Esa distinción evita atribuir a una compilación o a una simulación lo que solo una sesión de juego puede demostrar.
 
 ## 4. Motor de escena y construcción procedural
 
@@ -59,11 +92,11 @@ El segundo frente desarrolla un subsistema de generación espacial: un component
 
 En el prototipo tridimensional, la superficie seleccionada define una dirección de atracción o repulsión. La cámara y el cuerpo se reorientan de forma progresiva respecto de la nueva vertical. El sistema incorpora desplazamiento, salto y recuperación de posición al abandonar el área de juego.
 
-Esta capa procedural concentra la construcción del mundo y su comportamiento en código, sobre un entorno gráfico y físico existente. La evidencia disponible respalda un motor de escena a nivel de aplicación. La documentación reserva las afirmaciones sobre un renderizador independiente, composición de profundidad entre procesos o sincronización submilisegundo para cuando existan implementación y mediciones que las acrediten.
+Esta capa procedural concentra la construcción del mundo y su comportamiento en código, sobre un entorno gráfico y físico existente. La evidencia disponible respalda un motor de escena a nivel de aplicación. La composición entre procesos del mashup es un subsistema distinto, descrito en la sección anterior. El prototipo procedural no se presenta como un renderizador independiente.
 
 ![Captura local del prototipo espacial de gravedad variable](../assets/procedural-engine.png)
 
-*Figura 4. Captura conservada del prototipo local: estructuras suspendidas, iluminación y cámara en primera persona. Ilustra el entorno procedural; no demuestra una composición entre motores ni una prueba de rendimiento.*
+*Figura 5. Captura conservada del prototipo local: estructuras suspendidas, iluminación y cámara en primera persona. Ilustra el entorno procedural; no demuestra una composición entre motores ni una prueba de rendimiento.*
 
 ## 5. Relación entre los componentes
 
@@ -71,7 +104,7 @@ En el circuito de control, el entorno produce observaciones; el modelo neuronal 
 
 El entorno procedural aporta un espacio controlable para estudiar orientación, superficies y transformaciones de cámara. Su incorporación al mismo circuito exige definir unidades, referencias espaciales, tiempos de actualización y criterios de interrupción. Esta interfaz pertenece al siguiente tramo de integración.
 
-La publicación unifica el propósito y los resultados de ambos frentes sin presentar una conexión futura como un experimento ya realizado.
+La memoria describe las rutas de integración y sus resultados específicos. La unión del control neuronal con el mashup completo y el prototipo procedural sigue como objetivo experimental.
 
 ## 6. Estado de la evidencia
 
@@ -79,7 +112,8 @@ La publicación unifica el propósito y los resultados de ambos frentes sin pres
 | --- | --- | --- |
 | Decodificación de giro | Calibración inicial corregida; informe de 14 pruebas sin fallos | Trayectorias comparadas y respuesta a órdenes sostenidas |
 | Navegación instrumental | Llegada registrada en 8,2 s en un ensayo | Repeticiones, obstáculos y recuperación |
-| Respuesta de escape | Eventos lateralizados observados ante aproximación | Falsas alarmas y arbitraje completo |
+| Control neuronal del jugador | Escape lateralizado y tres series comparativas de 40/30/30 ensayos | Ventaja frente al control programado no establecida |
+| Fusión de juegos | Puente visual y de eventos; recreación nativa con pruebas conservadas | Campaña, interiores y validación de las últimas correcciones |
 | Generación procedural | Código local y captura de un entorno de gravedad variable | Integración con el circuito neuronal |
 | Rendimiento neuronal | Registros entre 0,28× y 1,89× tiempo real bajo cargas distintas | Medición conjunta de latencia y rendimiento sostenido |
 
@@ -95,6 +129,6 @@ La integración resulta informativa cuando cada transición puede examinarse: qu
 
 ## Procedencia y distribución
 
-La autoría de esta memoria y de la integración local corresponde a Gustavo Adolfo Matheus González. La base neuronal y sus imágenes de referencia proceden de [fly-brain-minecraft](https://github.com/blendi-remade/fly-brain-minecraft); el código base se distribuye bajo MIT y sus datos bajo CC BY 4.0. Los datos anatómicos proceden del proyecto [Male CNS](https://male-cns.janelia.org/), de FlyEM/Janelia y sus instituciones participantes. Las adaptaciones locales descritas no deben atribuirse al proyecto base.
+La autoría de esta memoria y de la integración local corresponde a Gustavo Adolfo Matheus González. La base neuronal y sus imágenes de referencia proceden de [fly-brain-minecraft](https://github.com/blendi-remade/fly-brain-minecraft); el código base se distribuye bajo MIT y sus datos bajo CC BY 4.0. Los datos anatómicos proceden del proyecto [Male CNS](https://male-cns.janelia.org/), de FlyEM/Janelia y sus instituciones participantes. Las adaptaciones locales descritas no deben atribuirse al proyecto base. La ruta de composición toma como referencia un ejemplo MIT de [universal-modder](https://github.com/rehan-remade/universal-modder); sus adaptaciones y la ruta nativa se distinguen en el registro privado. Se conservan las licencias y los avisos de procedencia correspondientes.
 
-Esta memoria publica descripción funcional, alcance y figuras seleccionadas. La instrumentación operativa y los archivos de trabajo permanecen en las carpetas locales de acceso restringido. La publicación no distribuye código del modelo, datos anatómicos, ejecutables ni manuales operativos. Las cifras de ensayos locales se presentan como resultados documentados; su reproducción independiente requiere los artefactos de ejecución correspondientes.
+Esta memoria publica descripción funcional, alcance y figuras seleccionadas. La instrumentación operativa y los registros completos se conservan en un repositorio privado separado. Los archivos comerciales de los juegos permanecen exclusivamente en la instalación local. La publicación no distribuye código del modelo, datos anatómicos, ejecutables ni manuales operativos. Las cifras de ensayos locales se presentan como resultados documentados; su reproducción independiente requiere los artefactos de ejecución correspondientes.
