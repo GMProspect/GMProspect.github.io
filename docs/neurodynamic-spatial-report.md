@@ -11,9 +11,13 @@ This report examines a computational system in which three problems converge: th
 
 The available evidence comprises a connectome-based spiking model, a corrected motor-decoder calibration, repeated comparisons of reflex policies, an interprocess spatial bridge, a second implementation that reconstructs selected mechanics within a single host process, and a separate procedural scene prototype. These components have different levels of validation. In particular, the neural controller has been evaluated in an embodied navigation setting, and the spatial bridge has been exercised in its host environment; the record does not establish that the neural controller has completed a campaign task inside the combined environment. The purpose of this report is to specify what was built, what was measured, and what remains open.
 
+![Illustrative reconstruction of the neurodynamic telemetry interface](../assets/neurodynamic-telemetry-interface.png)
+
+*Figure 1. Interface reconstruction based on the two reference captures. The anatomical display, motor channels, spike raster, and retinal matrices are presented without the original scene background. Small labels and values in this recreated image must not be used as measured data; the quantitative results in this report come from retained test and trial records. Reference interface and anatomical display: [underlying implementation](https://github.com/blendi-remade/fly-brain-minecraft).*
+
 ![Functional organization of the experimental system](../assets/neuro-control-architecture.svg)
 
-*Figure 1. Functional organization of stimulus acquisition, neural state evolution, motor decoding, arbitration, actuation, and telemetry. The procedural environment is shown as a prospective extension of the same control loop.*
+*Figure 2. Functional organization of stimulus acquisition, neural state evolution, motor decoding, arbitration, actuation, and telemetry. The procedural environment is shown as a prospective extension of the same control loop.*
 
 ## 1. Neurodynamic substrate and observability
 
@@ -47,7 +51,7 @@ The third series introduced combat. All three conditions reached the target in *
 
 ![Goal completion and damage across three experimental series](../assets/control-trials.png)
 
-*Figure 2. Results transcribed from the retained analyses for the three principal series. Each plotted condition contains ten trials. The first series shows why damage reduction cannot be interpreted without goal completion; the later series show the effect of changing the arbitration policy. Gray denotes no reflex; orange denotes a programmed reflex; cyan denotes a neural trigger. Bars are descriptive means, not uncertainty intervals.*
+*Figure 3. Results transcribed from the retained analyses for the three principal series. Each plotted condition contains ten trials. The first series shows why damage reduction cannot be interpreted without goal completion; the later series show the effect of changing the arbitration policy. Gray denotes no reflex; orange denotes a programmed reflex; cyan denotes a neural trigger. Bars are descriptive means, not uncertainty intervals.*
 
 The source of each action matters. The neural subsystem supplied an escape trigger; the path executor selected the route, and the combat layer selected a target. A behavioral outcome cannot be assigned to the neural readout without accounting for those downstream rules.
 
@@ -61,7 +65,7 @@ The second route reconstructs selected volumetric mechanics **inside one host pr
 
 ![Two spatial integration routes](../assets/spatial-integration-routes.svg)
 
-*Figure 3. Architectural routes represented from local source and validation records: interprocess composition and in-process reconstruction. The diagram is explanatory and is not a screen capture or a performance measurement.*
+*Figure 4. Architectural routes represented from local source and validation records: interprocess composition and in-process reconstruction. The diagram is explanatory and is not a screen capture or a performance measurement.*
 
 The existence of these routes establishes more than a communication bridge: geometry, materials, interaction semantics, camera behavior, collision rules, persistence, and failure recovery were recreated or adapted as part of the spatial system. It does not establish that every mechanic of either original environment has been reproduced.
 
@@ -89,4 +93,4 @@ The generalizable contribution is the measurement discipline: an apparent respon
 
 **Report and local integration:** Gustavo Adolfo Matheus González. The neuronal codebase originate from the [underlying research implementation](https://github.com/blendi-remade/fly-brain-minecraft); its code and processed data carry MIT and CC BY 4.0 terms, respectively. The anatomical dataset is from the [Male CNS project](https://male-cns.janelia.org/). The interprocess route adapted an [MIT-licensed reference example](https://github.com/rehan-remade/universal-modder). These citations identify underlying materials and do not assign authorship of the local integration to their maintainers.
 
-This public report includes derived descriptions, diagrams, and aggregate results. The implementation and full experimental record reside in a separate private repository. Commercial environment files and their extracted assets remain on the local machine.
+This public report includes derived descriptions, diagrams, an illustrative interface reconstruction, and aggregate results. The implementation and full experimental record reside in a separate private repository. Commercial environment files and their extracted assets remain on the local machine.
