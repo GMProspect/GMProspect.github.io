@@ -48,7 +48,9 @@
   "knowsLanguage": ["Spanish", "English"],
   "knowsAbout": [
     "Instrumentación y Control","Automatización Industrial","PLC","Node-RED",
-    "MQTT","Python","Sistemas Ciberfísicos","IoT","Edge Computing"
+    "MQTT","Python","Sistemas Ciberfísicos","IoT","Edge Computing",
+    "Neurocomputación","Biología Computacional","Modelado Biofísico de Redes Neuronales",
+    "Motores Gráficos Procedurales"
   ]
 }
 </script>
@@ -168,6 +170,25 @@ h2{font-size:1.7rem;font-weight:700;letter-spacing:-.5px;margin-bottom:8px}
 .card:hover .repo{color:var(--cyan)}
 .chip{font-family:var(--mono);font-size:.68rem;color:var(--muted);border:1px solid var(--border);padding:3px 9px;border-radius:6px}
 
+/* ── featured project ── */
+.card.featured{
+  grid-column:1 / -1;
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:26px;
+  background:linear-gradient(135deg,rgba(22,30,44,0.85),rgba(15,21,32,0.92));
+  border:1px solid rgba(34,211,238,0.38);
+  box-shadow:0 12px 36px rgba(0,0,0,0.55), inset 0 0 24px rgba(34,211,238,0.04);
+}
+.card.featured::before{opacity:1;height:3px;background:linear-gradient(90deg,var(--cyan),var(--orange),transparent)}
+.card.featured:hover{border-color:var(--cyan);box-shadow:0 16px 48px rgba(0,0,0,0.65), 0 0 20px rgba(34,211,238,0.18)}
+@media(max-width:860px){.card.featured{grid-template-columns:1fr}}
+.featured-media{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-self:center}
+.featured-media img{width:100%;height:115px;object-fit:cover;border-radius:8px;border:1px solid var(--border);transition:transform .3s,border-color .3s}
+.featured-media img:first-child{grid-column:1 / -1;height:145px}
+.featured-media img:hover{transform:scale(1.02);border-color:var(--cyan)}
+.featured-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.68rem;color:var(--orange);background:rgba(255,138,61,0.12);border:1px solid rgba(255,138,61,0.3);padding:3px 8px;border-radius:4px;margin-bottom:8px}
+
 /* ── timeline ── */
 .timeline{position:relative;padding-left:26px}
 .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:var(--border)}
@@ -258,6 +279,43 @@ footer{padding:40px 0;text-align:center;color:var(--muted);
     <h2 class="reveal">Del piso de planta a la nube</h2>
     <p class="lead reveal">Repositorios y productos reales, ordenados por lo que mejor representa mi trabajo: la integración IT/OT.</p>
     <div class="grid">
+
+      <!-- PROYECTO INSIGNIA: SISTEMA CIBERFÍSICO NEUROMÓRFICO & CO-SIMULACIÓN -->
+      <div class="card featured reveal">
+        <a href="https://github.com/GMProspect" target="_blank" rel="noopener" style="text-decoration:none; color:inherit; display:flex; flex-direction:column; justify-content:space-between;">
+          <div>
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px;">
+              <span class="cat">Investigación Científica &middot; Neurocomputación &amp; Gráficos</span>
+              <span class="repo" style="position:static; margin-left:auto;">⌥ Repo Privado + Docs Públicos ↗</span>
+            </div>
+            <div class="featured-badge">● PROYECTO INSIGNIA &middot; ENTORNO BIO-CIBERFÍSICO</div>
+            <h3 style="font-size:1.32rem; line-height:1.25; margin:6px 0 12px; color:#fff;">Framework Ciberfísico Neuromórfico &amp; Co-Simulación Espacial Multiescala</h3>
+            <p style="font-size:0.91rem; margin-bottom:12px;">
+              Plataforma <em>in-silico</em> de ciclo cerrado que unifica la simulación biofísica de picos (LIF) del conectoma íntegro de <em>Drosophila melanogaster</em> (MaleCNS-v1.0, ~139k neuronas / ~176k sinapsis) con un motor gráfico procedural y un compositor de profundidad inversa (Reversed-Z depth).
+            </p>
+            <p style="font-size:0.87rem; color:var(--muted); margin-bottom:14px; line-height:1.55;">
+              <strong>Dinámica e Interacción Unificada:</strong> El sistema sincroniza un sustrato volumétrico discreto con un simulador cinemático continuo 6-DoF sobre un bus de memoria compartida e IPC sub-milisegundo (&lt;1 ms). Incorpora el descubrimiento empírico y formulación matemática de un <strong>filtro de adaptación homeostática de línea base (&tau; = 3000 ms)</strong> para suprimir la asimetría tónica de lateralización motora (DNa02) sin atenuar virajes fásicos, integrado a un árbitro bioeléctrico de escape de emergencia gobernado por la fibra gigante (DNp01 &ge; 340 Hz) ante estímulos de colisión visual óptica.
+            </p>
+            <p style="font-size:0.85rem; color:var(--cyan); border-left:2px solid var(--cyan); padding-left:10px; margin-bottom:14px; font-family:var(--mono);">
+              Horizonte Traslacional: Arquitectura base para el modelado biofísico de redes complejas y simulación hemodinámica predictiva en Malformaciones Arteriovenosas Cerebrales (MAV).
+            </p>
+          </div>
+          <div class="stack">
+            <span class="chip" style="border-color:rgba(34,211,238,0.4); color:var(--cyan);">Conectómica (MaleCNS / LIF)</span>
+            <span class="chip">Motor Gráfico Procedural</span>
+            <span class="chip">Compositor Reversed-Z</span>
+            <span class="chip">Sistemas Ciberfísicos (IPC)</span>
+            <span class="chip">Homeostasis Adaptativa (&tau;)</span>
+            <span class="chip" style="border-color:rgba(255,138,61,0.4); color:var(--orange);">Biología Computacional (MAV)</span>
+            <span class="chip">Java 21 / C++ / Python</span>
+          </div>
+        </a>
+        <div class="featured-media">
+          <img src="assets/neuroscope-telemetry.png" alt="Telemetría Neurofuncional en Vivo" title="Telemetría Neurofuncional: espigas LIF y motoneuronas descendentes">
+          <img src="assets/connectome-density.png" alt="Densidad Sináptica del Conectoma MaleCNS" title="Conectoma MaleCNS: reconstrucción de 139k somas">
+          <img src="assets/procedural-engine.png" alt="Motor Gráfico Procedural" title="Compositor espacial y generación procedural in-memory">
+        </div>
+      </div>
 
       <a class="card reveal" href="https://github.com/GMProspect/ingenieria-360-suite" target="_blank" rel="noopener">
         <span class="repo">↗</span><span class="cat">Producto publicado</span>
